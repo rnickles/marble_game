@@ -26,7 +26,7 @@ function init() {
   const controls = new TrackballControls(camera, renderer.domElement);
   controls.noRotate = true; // we don't want rotation
 
-  // create a scene-graph data structure
+  // create a scene-graph data structure for lighting
   var scene = new THREE.Scene();
 
   // create a Matter.js engine
@@ -58,5 +58,5 @@ function init() {
   render();
 }
 
-    // schedule to call init() once the page loads.
+// schedule to call init() once the page loads.
 window.addEventListener('load', init);
