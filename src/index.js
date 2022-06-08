@@ -33,7 +33,7 @@ function init() {
   var engine = Matter.Engine.create({render: {visible: false}});
 
   // initialize the level and retrieve a list of rendered representations
-  let _bodies = init_level(engine, scene);
+  var _bodies = init_level(engine, scene);
 
   //
   // THE GAME LOOP
@@ -43,9 +43,8 @@ function init() {
     requestAnimationFrame(render);
 
     // sychronize the rendered representation with the physical representation.
-    for (var j = 0; j < engine.world.bodies.length; j++) {
-      var b = engine.world.bodies[j].position;
-      _bodies[j].position.set(b.x, b.y, 0)
+    for (var j = 0; j < _bodies.length; j++) {
+      _bodies[j].render()
     }
 
     // update any changes to the view based on user input from either mouse or touch.
