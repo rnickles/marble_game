@@ -1,5 +1,6 @@
 import Matter from 'matter-js';
 import * as THREE from 'three';
+import { matter_to_three_X, matter_to_three_Y } from '../utils';
 
 export class Wall {
     constructor(x, y, width, height, engine, group) {
@@ -20,7 +21,7 @@ export class Wall {
         group.add(mesh)
 
         // align the mesh to the body
-        mesh.position.set(x-405, -(y-305));
+        mesh.position.set(matter_to_three_X(x), matter_to_three_Y(y));
     }
 
     render() {
