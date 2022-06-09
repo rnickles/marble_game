@@ -1,5 +1,6 @@
 import Matter from 'matter-js';
 import * as THREE from 'three';
+import { matter_to_three_X, matter_to_three_Y } from '../utils';
 
 const DOT_SIZE = 30;
 
@@ -36,6 +37,6 @@ export class Marble {
     render() {
         // update the position of the render to the physics engine
         let pos = this.#bod.position;
-        this.#mesh.position.set(pos.x-405, -(pos.y-305), 0)
+        this.#mesh.position.set(matter_to_three_X(pos.x), matter_to_three_Y(pos.y), 0)
     }
 }

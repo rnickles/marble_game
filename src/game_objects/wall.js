@@ -11,7 +11,7 @@ export class Wall {
 
         // THREE stuff
         // create a THREE geometry
-        let geometry = new THREE.BoxGeometry(width, height, 170);
+        let geometry = new THREE.BoxGeometry(width, height-30, 300);
         // create a THREE material
         let material = new THREE.MeshPhongMaterial({color: 0x276a4b});
         // create a THREE mesh

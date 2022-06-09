@@ -16,7 +16,7 @@ function init() {
 
   // setup the camera
   let camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10000);
-  camera.position.x = -100;
+  camera.position.x = 0;//-100;
   camera.position.y = 200;
   camera.position.z = 1600;
 
@@ -26,7 +26,7 @@ function init() {
   const controls = new TrackballControls(camera, renderer.domElement);
   controls.noRotate = true; // we don't want rotation
 
-  // create a scene-graph data structure for lighting
+  // create a scene-graph data structure
   let scene = new THREE.Scene();
 
   // create a Matter.js engine
