@@ -30,7 +30,7 @@ function init() {
   let scene = new THREE.Scene();
 
   // create a Matter.js engine
-  let engine = Matter.Engine.create();
+  let engine = Matter.Engine.create({gravity:{y:-1}});
 
   // initialize the level and retrieve a list of game objects
   let _bodies = init_level(engine, scene);
