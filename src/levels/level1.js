@@ -1,6 +1,6 @@
 // import Matter from 'matter-js';
 import * as THREE from 'three';
-import { Wall } from "../game_objects/wall"
+import { Wall, Goal } from "../game_objects/wall"
 import { Marble } from "../game_objects/marble"
 
 export function init_level(engine, scene) {
@@ -26,6 +26,9 @@ export function init_level(engine, scene) {
     let _m = new Marble(0, 600, engine, group);
     // add it to _bodies
     _bodies.push(_m);
+
+    let _g = new Goal(0, 0, engine, group, _m);
+    _bodies.push(_w);
 
     return _bodies
 }
