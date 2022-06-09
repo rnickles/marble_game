@@ -1,6 +1,5 @@
 import Matter from 'matter-js';
 import * as THREE from 'three';
-import { matter_to_three_X, matter_to_three_Y } from '../utils';
 
 export class Wall {
     constructor(x, y, width, height, engine, group) {
@@ -12,7 +11,7 @@ export class Wall {
 
         // THREE stuff
         // create a THREE geometry
-        let geometry = new THREE.BoxGeometry(width, height-30, 300);
+        let geometry = new THREE.BoxGeometry(width, height-30, 300); //hack to prevent overlap
         // create a THREE material
         let material = new THREE.MeshPhongMaterial({color: 0x276a4b});
         // create a THREE mesh
@@ -21,7 +20,7 @@ export class Wall {
         group.add(mesh)
 
         // align the mesh to the body
-        mesh.position.set(matter_to_three_X(x), matter_to_three_Y(y));
+        mesh.position.set(x, y);
     }
 
     render() {

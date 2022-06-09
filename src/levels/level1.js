@@ -18,7 +18,7 @@ export function init_level(engine, scene) {
     _bodies.push(_w);
 
     // create a wall that belongs to the group
-    let _w2 = new Wall(0, 0, 1000, 100, engine, group);
+    let _w2 = new Wall(0, -600, 1000, 100, engine, group);
     // add it to _bodies
     _bodies.push(_w2);
 

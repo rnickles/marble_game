@@ -14,9 +14,9 @@ function init() {
   renderer.setPixelRatio(window.devicePixelRatio);
   document.body.appendChild(renderer.domElement);
 
-  // setup the camera
+  // setup the camera and position slightly up and far back
   let camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10000);
-  camera.position.x = 0;//-100;
+  camera.position.x = 0;
   camera.position.y = 200;
   camera.position.z = 1600;
 
@@ -30,7 +30,9 @@ function init() {
   let scene = new THREE.Scene();
 
   // create a Matter.js engine
-  let engine = Matter.Engine.create({gravity:{y:-1}});
+  let engine = Matter.Engine.create({
+    gravity: {y:-1, scale: 0.005}
+  });
 
   // initialize the level and retrieve a list of game objects
   let _bodies = init_level(engine, scene);
@@ -39,9 +41,12 @@ function init() {
   Matter.Runner.run(engine);
 
   // lighting
-  let dirLight = new THREE.DirectionalLight(0xffffff, 1);
-  dirLight.position.set(-30, 50, 40);
-  scene.add(dirLight);
+  let dirLight1 = new THREE.DirectionalLight(0xffffff, 1);
+  dirLight1.position.set(-30, 50, 40);
+  scene.add(dirLight1);
+  let dirLight2 = new THREE.DirectionalLight(0xffffff, 1);
+  dirLight2.position.set(30, -50, -40);
+  scene.add(dirLight2);
 
   //
   // THE GAME LOOP
