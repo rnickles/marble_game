@@ -7,7 +7,7 @@ export class Wall {
         // create a matter body
         let bod = Matter.Bodies.rectangle(x, y, width, height, {isStatic: true});
         // add it to the physics world
-        Matter.World.add(engine.world, bod)
+        Matter.Composite.add(engine.world, bod)
 
         // THREE stuff
         // create a THREE geometry
@@ -19,8 +19,8 @@ export class Wall {
         // add the mesh to the scengraph group
         group.add(mesh)
 
+        // align the mesh to the body
         mesh.position.set(x-405, -(y-305));
-
     }
 
     render() {

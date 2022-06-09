@@ -15,7 +15,7 @@ export class Marble {
             density: 0.1
         });
         // add it to the physics world
-        Matter.World.add(engine.world, bod);
+        Matter.Composite.add(engine.world, bod);
         
 
         // THREE stuff
