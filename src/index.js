@@ -9,13 +9,13 @@ import { init_level } from "./levels/level1";
 function init() {
   
   // establish the renderer
-  var renderer = new THREE.WebGLRenderer({ antialias: true });
+  let renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
   document.body.appendChild(renderer.domElement);
 
   // setup the camera
-  var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10000);
+  let camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10000);
   camera.position.x = -100;
   camera.position.y = 200;
   camera.position.z = 1600;
@@ -27,13 +27,21 @@ function init() {
   controls.noRotate = true; // we don't want rotation
 
   // create a scene-graph data structure for lighting
-  var scene = new THREE.Scene();
+  let scene = new THREE.Scene();
 
   // create a Matter.js engine
-  var engine = Matter.Engine.create({render: {visible: false}});
+  let engine = Matter.Engine.create({render: {visible: false}});
 
   // initialize the level and retrieve a list of rendered representations
-  var _bodies = init_level(engine, scene);
+  let _bodies = init_level(engine, scene);
+  
+  // run the physics engine
+  Matter.Runner.run(engine);
+
+  // lighting
+  let dirLight = new THREE.DirectionalLight(0xffffff, 1);
+  dirLight.position.set(-30, 50, 40);
+  scene.add(dirLight);
 
   //
   // THE GAME LOOP
@@ -43,7 +51,7 @@ function init() {
     requestAnimationFrame(render);
 
     // sychronize the rendered representation with the physical representation.
-    for (var j = 0; j < _bodies.length; j++) {
+    for (let j = 0; j < _bodies.length; j++) {
       _bodies[j].render()
     }
 
